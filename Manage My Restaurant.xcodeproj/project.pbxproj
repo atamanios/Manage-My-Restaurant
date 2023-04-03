@@ -13,6 +13,13 @@
 		F621D03F29D9FF3600229097 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F621D03E29D9FF3600229097 /* Preview Assets.xcassets */; };
 		F621D04129D9FF3600229097 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621D04029D9FF3600229097 /* Persistence.swift */; };
 		F621D04429D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F621D04229D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld */; };
+		F621D04C29DA013D00229097 /* GuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621D04B29DA013D00229097 /* GuestModel.swift */; };
+		F621D04E29DA01F000229097 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621D04D29DA01F000229097 /* TableModel.swift */; };
+		F651356429DAAE1F00B16352 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356329DAAE1F00B16352 /* Settings.swift */; };
+		F651356A29DAB13200B16352 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356929DAB13200B16352 /* Onboarding.swift */; };
+		F651356C29DAB35C00B16352 /* TableOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356B29DAB35C00B16352 /* TableOverview.swift */; };
+		F651356E29DAB36D00B16352 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356D29DAB36D00B16352 /* Reservation.swift */; };
+		F651357029DAB5BE00B16352 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356F29DAB5BE00B16352 /* Snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,14 @@
 		F621D04029D9FF3600229097 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F621D04329D9FF3600229097 /* Manage_My_Restaurant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Manage_My_Restaurant.xcdatamodel; sourceTree = "<group>"; };
 		F621D04529D9FF3600229097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F621D04B29DA013D00229097 /* GuestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestModel.swift; sourceTree = "<group>"; };
+		F621D04D29DA01F000229097 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
+		F651356329DAAE1F00B16352 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F651356929DAB13200B16352 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		F651356B29DAB35C00B16352 /* TableOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOverview.swift; sourceTree = "<group>"; };
+		F651356D29DAB36D00B16352 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		F651356F29DAB5BE00B16352 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
+		F651357129DAEFE400B16352 /* Manage My Restaurant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Manage My Restaurant.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +71,16 @@
 		F621D03629D9FF3500229097 /* Manage My Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				F651357129DAEFE400B16352 /* Manage My Restaurant.entitlements */,
 				F621D03729D9FF3500229097 /* Manage_My_RestaurantApp.swift */,
 				F621D03929D9FF3500229097 /* ContentView.swift */,
+				F651356B29DAB35C00B16352 /* TableOverview.swift */,
+				F651356D29DAB36D00B16352 /* Reservation.swift */,
+				F651356329DAAE1F00B16352 /* Settings.swift */,
+				F651356929DAB13200B16352 /* Onboarding.swift */,
+				F651356F29DAB5BE00B16352 /* Snapshot.swift */,
+				F621D04B29DA013D00229097 /* GuestModel.swift */,
+				F621D04D29DA01F000229097 /* TableModel.swift */,
 				F621D03B29D9FF3600229097 /* Assets.xcassets */,
 				F621D04029D9FF3600229097 /* Persistence.swift */,
 				F621D04529D9FF3600229097 /* Info.plist */,
@@ -147,7 +170,14 @@
 			files = (
 				F621D04129D9FF3600229097 /* Persistence.swift in Sources */,
 				F621D04429D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld in Sources */,
+				F651357029DAB5BE00B16352 /* Snapshot.swift in Sources */,
+				F651356E29DAB36D00B16352 /* Reservation.swift in Sources */,
+				F651356A29DAB13200B16352 /* Onboarding.swift in Sources */,
+				F651356429DAAE1F00B16352 /* Settings.swift in Sources */,
+				F621D04E29DA01F000229097 /* TableModel.swift in Sources */,
 				F621D03A29D9FF3500229097 /* ContentView.swift in Sources */,
+				F651356C29DAB35C00B16352 /* TableOverview.swift in Sources */,
+				F621D04C29DA013D00229097 /* GuestModel.swift in Sources */,
 				F621D03829D9FF3500229097 /* Manage_My_RestaurantApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,17 +304,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Manage My Restaurant/Manage My Restaurant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Manage My Restaurant/Preview Content\"";
 				DEVELOPMENT_TEAM = X82WCW2JWZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -292,6 +323,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ataman.deniz.Manage-My-Restaurant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -303,17 +337,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Manage My Restaurant/Manage My Restaurant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Manage My Restaurant/Preview Content\"";
 				DEVELOPMENT_TEAM = X82WCW2JWZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,6 +356,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ataman.deniz.Manage-My-Restaurant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

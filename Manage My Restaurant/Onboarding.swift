@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct Onboarding: View {
+    
+    @State var nameOfRestaurant = ""
+    @State var numberOfTables = 0
+    @State var openDays: [String] = []
+    @State var operatingHours: [String] = []
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            Text("Name of the restaurant")
+            
+            Text("Upload restaurant logo")
+            
+            Text("Number of tables")
+            
+            Text("open days")
+            
+            Text("Operating Hours")
+            
+        }
     }
 }
 

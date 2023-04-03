@@ -6,10 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Reservation: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            Text("Guest Name")
+            
+            Text("Number of guests")
+            
+            Text("Date")
+            
+            Text("Phone number")
+            
+            Text("Suggested Table")
+            
+            Text("Allocated table")
+        
+        }
     }
 }
 

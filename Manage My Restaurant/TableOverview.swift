@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TableOverview: View {
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            Text("Current Date")
+            
+            Text("Table Overview")
+            
+            Text("Occupancy")
+            
+        }
     }
 }
 

@@ -6,10 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Settings: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            Text("General Settings")
+            
+            Text("Does your restaurant have closed days?")
+            
+            Text("Restaurant open hours")
+            
+            Text("Standard allocated time for each reservation")
+            
+            Text("Number of Table")
+            
+            Text("Distribute these reservations to tables")
+            
+            Text("How far new reservations be allowed")
+        
+        }
     }
 }
 
