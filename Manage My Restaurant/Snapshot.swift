@@ -10,18 +10,31 @@ import SwiftUI
 struct Snapshot: View {
     var body: some View {
         
-        VStack{
-            
-            Text("Todays Overview")
-            
-            Text("First reservation")
-            
-            Text("Last reservation")
-            
-            Text("Occupancy")
-            
-        }
-               
+        TabView{
+                VStack{
+                    
+                    Text("Todays Overview")
+                    
+                    Text("First reservation")
+                    
+                    Text("Last reservation")
+                    
+                    Text("Cool Visual about occupancy")
+                    
+                }
+                
+                
+                VStack {
+                    
+                    Text("This Weeks overview")
+                    
+                    Text("Cool Visual about occupancy")
+                    
+                    
+                }
+            }
+        .tabViewStyle(.page)
+        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
 }
 

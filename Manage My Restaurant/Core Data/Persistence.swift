@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import SwiftUI
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -13,6 +14,13 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        
+        for i in 1...10 {
+            
+            let newTable = Tables(context: viewContext)
+            newTable.tableNumber = Int16(i)
+            newTable.seatingCapacity = Int16.random(in: 2...4)
+        }
         
         do {
             try viewContext.save()

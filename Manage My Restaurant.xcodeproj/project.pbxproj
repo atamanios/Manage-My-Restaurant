@@ -13,13 +13,21 @@
 		F621D03F29D9FF3600229097 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F621D03E29D9FF3600229097 /* Preview Assets.xcassets */; };
 		F621D04129D9FF3600229097 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621D04029D9FF3600229097 /* Persistence.swift */; };
 		F621D04429D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F621D04229D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld */; };
-		F621D04C29DA013D00229097 /* GuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621D04B29DA013D00229097 /* GuestModel.swift */; };
-		F621D04E29DA01F000229097 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621D04D29DA01F000229097 /* TableModel.swift */; };
+		F64B66AD29E83C82007E443D /* ShortString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66AC29E83C82007E443D /* ShortString.swift */; };
+		F64B66B029E867CA007E443D /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66AF29E867CA007E443D /* TableView.swift */; };
+		F64B66B229E86EED007E443D /* IndepthTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66B129E86EED007E443D /* IndepthTableView.swift */; };
+		F64B66B629E98053007E443D /* CreateNewReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66B529E98053007E443D /* CreateNewReservation.swift */; };
+		F64B66B829EADE9C007E443D /* DateOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66B729EADE9C007E443D /* DateOperations.swift */; };
 		F651356429DAAE1F00B16352 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356329DAAE1F00B16352 /* Settings.swift */; };
 		F651356A29DAB13200B16352 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356929DAB13200B16352 /* Onboarding.swift */; };
 		F651356C29DAB35C00B16352 /* TableOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356B29DAB35C00B16352 /* TableOverview.swift */; };
-		F651356E29DAB36D00B16352 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356D29DAB36D00B16352 /* Reservation.swift */; };
 		F651357029DAB5BE00B16352 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356F29DAB5BE00B16352 /* Snapshot.swift */; };
+		F660F24C29DC8E9300419354 /* OpenDaysSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660F24B29DC8E9300419354 /* OpenDaysSheet.swift */; };
+		F6BDFB0529FA654B0074B26E /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDFB0429FA654B0074B26E /* FetchedObjects.swift */; };
+		F6E6C70029E4303A001C92E5 /* ContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C6FF29E4303A001C92E5 /* ContextOperations.swift */; };
+		F6E6C70429E458F3001C92E5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C70329E458F3001C92E5 /* UserSettings.swift */; };
+		F6E6C70929E47AF8001C92E5 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C70829E47AF8001C92E5 /* DayModel.swift */; };
+		F6E6C70E29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C70D29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,14 +39,22 @@
 		F621D04029D9FF3600229097 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F621D04329D9FF3600229097 /* Manage_My_Restaurant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Manage_My_Restaurant.xcdatamodel; sourceTree = "<group>"; };
 		F621D04529D9FF3600229097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F621D04B29DA013D00229097 /* GuestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestModel.swift; sourceTree = "<group>"; };
-		F621D04D29DA01F000229097 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
+		F64B66AC29E83C82007E443D /* ShortString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortString.swift; sourceTree = "<group>"; };
+		F64B66AF29E867CA007E443D /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		F64B66B129E86EED007E443D /* IndepthTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndepthTableView.swift; sourceTree = "<group>"; };
+		F64B66B529E98053007E443D /* CreateNewReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewReservation.swift; sourceTree = "<group>"; };
+		F64B66B729EADE9C007E443D /* DateOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOperations.swift; sourceTree = "<group>"; };
 		F651356329DAAE1F00B16352 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F651356929DAB13200B16352 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		F651356B29DAB35C00B16352 /* TableOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOverview.swift; sourceTree = "<group>"; };
-		F651356D29DAB36D00B16352 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		F651356F29DAB5BE00B16352 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		F651357129DAEFE400B16352 /* Manage My Restaurant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Manage My Restaurant.entitlements"; sourceTree = "<group>"; };
+		F660F24B29DC8E9300419354 /* OpenDaysSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDaysSheet.swift; sourceTree = "<group>"; };
+		F6BDFB0429FA654B0074B26E /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
+		F6E6C6FF29E4303A001C92E5 /* ContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextOperations.swift; sourceTree = "<group>"; };
+		F6E6C70329E458F3001C92E5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		F6E6C70829E47AF8001C92E5 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
+		F6E6C70D29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,18 +89,21 @@
 			children = (
 				F651357129DAEFE400B16352 /* Manage My Restaurant.entitlements */,
 				F621D03729D9FF3500229097 /* Manage_My_RestaurantApp.swift */,
-				F621D03929D9FF3500229097 /* ContentView.swift */,
+				F6BDFB0A29FA69240074B26E /* MainView */,
+				F64B66B529E98053007E443D /* CreateNewReservation.swift */,
+				F64B66AF29E867CA007E443D /* TableView.swift */,
+				F64B66B129E86EED007E443D /* IndepthTableView.swift */,
 				F651356B29DAB35C00B16352 /* TableOverview.swift */,
-				F651356D29DAB36D00B16352 /* Reservation.swift */,
-				F651356329DAAE1F00B16352 /* Settings.swift */,
-				F651356929DAB13200B16352 /* Onboarding.swift */,
+				F660F24B29DC8E9300419354 /* OpenDaysSheet.swift */,
 				F651356F29DAB5BE00B16352 /* Snapshot.swift */,
-				F621D04B29DA013D00229097 /* GuestModel.swift */,
-				F621D04D29DA01F000229097 /* TableModel.swift */,
+				F64B66B729EADE9C007E443D /* DateOperations.swift */,
+				F6BDFB0929FA68AB0074B26E /* UserProfile */,
+				F6BDFB0729FA68540074B26E /* Model */,
+				F6BDFB0829FA68750074B26E /* CustomViewModifiers */,
+				F64B66AE29E83E8C007E443D /* Extension */,
+				F6BDFB0629FA672E0074B26E /* Core Data */,
 				F621D03B29D9FF3600229097 /* Assets.xcassets */,
-				F621D04029D9FF3600229097 /* Persistence.swift */,
 				F621D04529D9FF3600229097 /* Info.plist */,
-				F621D04229D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld */,
 				F621D03D29D9FF3600229097 /* Preview Content */,
 			);
 			path = "Manage My Restaurant";
@@ -96,6 +115,59 @@
 				F621D03E29D9FF3600229097 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F64B66AE29E83E8C007E443D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F64B66AC29E83C82007E443D /* ShortString.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F6BDFB0629FA672E0074B26E /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				F6E6C6FF29E4303A001C92E5 /* ContextOperations.swift */,
+				F6BDFB0429FA654B0074B26E /* FetchedObjects.swift */,
+				F621D04029D9FF3600229097 /* Persistence.swift */,
+				F621D04229D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		F6BDFB0729FA68540074B26E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6E6C70829E47AF8001C92E5 /* DayModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6BDFB0829FA68750074B26E /* CustomViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				F6E6C70D29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift */,
+			);
+			path = CustomViewModifiers;
+			sourceTree = "<group>";
+		};
+		F6BDFB0929FA68AB0074B26E /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				F6E6C70329E458F3001C92E5 /* UserSettings.swift */,
+				F651356329DAAE1F00B16352 /* Settings.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		F6BDFB0A29FA69240074B26E /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				F651356929DAB13200B16352 /* Onboarding.swift */,
+				F621D03929D9FF3500229097 /* ContentView.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,6 +186,8 @@
 			dependencies = (
 			);
 			name = "Manage My Restaurant";
+			packageProductDependencies = (
+			);
 			productName = "Manage My Restaurant";
 			productReference = F621D03429D9FF3500229097 /* Manage My Restaurant.app */;
 			productType = "com.apple.product-type.application";
@@ -142,6 +216,8 @@
 				Base,
 			);
 			mainGroup = F621D02B29D9FF3500229097;
+			packageReferences = (
+			);
 			productRefGroup = F621D03529D9FF3500229097 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,16 +244,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6BDFB0529FA654B0074B26E /* FetchedObjects.swift in Sources */,
+				F64B66B829EADE9C007E443D /* DateOperations.swift in Sources */,
 				F621D04129D9FF3600229097 /* Persistence.swift in Sources */,
+				F6E6C70429E458F3001C92E5 /* UserSettings.swift in Sources */,
 				F621D04429D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld in Sources */,
+				F64B66B629E98053007E443D /* CreateNewReservation.swift in Sources */,
+				F660F24C29DC8E9300419354 /* OpenDaysSheet.swift in Sources */,
+				F6E6C70E29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift in Sources */,
 				F651357029DAB5BE00B16352 /* Snapshot.swift in Sources */,
-				F651356E29DAB36D00B16352 /* Reservation.swift in Sources */,
+				F64B66AD29E83C82007E443D /* ShortString.swift in Sources */,
 				F651356A29DAB13200B16352 /* Onboarding.swift in Sources */,
+				F64B66B229E86EED007E443D /* IndepthTableView.swift in Sources */,
 				F651356429DAAE1F00B16352 /* Settings.swift in Sources */,
-				F621D04E29DA01F000229097 /* TableModel.swift in Sources */,
 				F621D03A29D9FF3500229097 /* ContentView.swift in Sources */,
+				F6E6C70929E47AF8001C92E5 /* DayModel.swift in Sources */,
 				F651356C29DAB35C00B16352 /* TableOverview.swift in Sources */,
-				F621D04C29DA013D00229097 /* GuestModel.swift in Sources */,
+				F64B66B029E867CA007E443D /* TableView.swift in Sources */,
+				F6E6C70029E4303A001C92E5 /* ContextOperations.swift in Sources */,
 				F621D03829D9FF3500229097 /* Manage_My_RestaurantApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -289,6 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -311,6 +397,7 @@
 				DEVELOPMENT_TEAM = X82WCW2JWZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -327,6 +414,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -344,6 +432,7 @@
 				DEVELOPMENT_TEAM = X82WCW2JWZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -360,6 +449,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
