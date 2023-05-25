@@ -10,20 +10,7 @@ import SwiftUI
 struct TableView: View {
     
     @ObservedObject var tableItem: Tables
-    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Guest.date, ascending: true)],
-//        animation: .default)
-    
-//    private var guests: FetchedResults<Guest>
-//
-//    init(withTables table: Tables) {
-//        self.tableItem = table
-//
-//        _guests = FetchRequest(entity: Guest.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Guest.name, ascending: true)], predicate: NSPredicate(format: "table == %@", table))
-//
-//    }
-    
+        
     var body: some View {
         NavigationStack {
             VStack{

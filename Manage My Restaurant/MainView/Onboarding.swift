@@ -158,15 +158,8 @@ struct Onboarding: View {
     
     func createTables() {
         
-        for item in 1...(numberOfTables) {
-            
-            let newTable = Tables(context: viewContext)
-            newTable.tableNumber = Int16(item)
-            newTable.seatingCapacity = 2
-            
-        }
+        ContextOperations.batchCreate(viewContext, numberOfTables)
         
-        ContextOperations.save(viewContext)
     }
 }
 

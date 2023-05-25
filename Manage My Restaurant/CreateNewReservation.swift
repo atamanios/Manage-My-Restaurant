@@ -18,15 +18,8 @@ struct CreateNewReservation: View {
     @State var activeTable = 1
     @State var isDatePickerPresented = false
     
-//  predicate calls reservationDate variable before it is initialized. Find another method.
-    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Tables.tableNumber, ascending: true)],
-//        predicate: NSPredicate(value: true),
-//        animation: .default)
-//
-//    private var tables: FetchedResults<Tables>
-    
+//    TODO: predicate calls reservationDate variable before it is initialized. Find another method.
+        
 //    TODO: move views to extension for code reading clarity
     
     var body: some View {
@@ -75,27 +68,29 @@ struct CreateNewReservation: View {
                     .padding(.bottom, 5)
                     
                 
-                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) {
-                    (tables: [Tables]) in
+                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Tables]) in
                     
-                    List(tables, id: \.self) { table in
+                    List {
                         
-                        let _ = print(table)
-                        
-                        HStack {
+                        ForEach(tables) { table in
                             
-                            Image(systemName: activeTable == Int(table.tableNumber) ?  "circle.inset.filled" : "circle" )
-                                .padding(.trailing, 5)
+                            let _ = print("The table is \(table.tableNumber) and \(table) ")
                             
-                            Text("Table: \(table.tableNumber)")
-                                .padding(.trailing, 5)
+                            HStack {
+                                
+                                Image(systemName: activeTable == Int(table.tableNumber) ?  "circle.inset.filled" : "circle" )
+                                    .padding(.trailing, 5)
+                                
+                                Text("Table: \(table.tableNumber)")
+                                    .padding(.trailing, 5)
+                                
+                                Text("Available Time Slots")
+                                
+                            }
                             
-                            Text("Available Time Slots")
-                            
-                        }
-                        
-                        .onTapGesture {
-                            activeTable = Int(table.tableNumber)
+                            .onTapGesture {
+                                activeTable = Int(table.tableNumber)
+                            }
                         }
                     }
                     
@@ -141,17 +136,19 @@ struct CreateNewReservation: View {
     }
     func buildPredicate() -> NSPredicate {
         
-        let startingRange = Date(timeInterval: -7199, since: reservationDate)
+//        let startingRange = Date(timeInterval: -7199, since: reservationDate)
+//
+//        let endingRange = Date(timeInterval: 7199, since: reservationDate)
+//
+//        let startingPredicate = NSPredicate(format: "date < %@", startingRange as NSDate)
+//
+//        let endingPredicate = NSPredicate(format: "date > %@", endingRange as NSDate)
+//
+//        let compoundedPredicate = NSCompoundPredicate(type: .and, subpredicates: [startingPredicate,endingPredicate])
+//
+//        return compoundedPredicate
         
-        let endingRange = Date(timeInterval: 7199, since: reservationDate)
-        
-        let startingPredicate = NSPredicate(format: "date < %@", startingRange as NSDate)
-        
-        let endingPredicate = NSPredicate(format: "date > %@", endingRange as NSDate)
-        
-        let compoundedPredicate = NSCompoundPredicate(type: .and, subpredicates: [startingPredicate,endingPredicate])
-        
-        return compoundedPredicate
+        return NSPredicate(value: true)
     }
     
     func buildSortDescriptor() -> [NSSortDescriptor] {

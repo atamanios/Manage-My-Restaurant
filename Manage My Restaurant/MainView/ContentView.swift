@@ -48,9 +48,13 @@ struct ContentView: View {
                     settings
                 }
                 
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    delete
-//                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    delete
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    batchCreate
+                }
                 
                 ToolbarItem(placement: .bottomBar) {
                     
@@ -82,16 +86,30 @@ extension ContentView {
         }
     }
     
-//    var delete: some View {
-//
-//        Button (action: {
-//
-//            ContextOperations.batchDelete("Tables", viewContext)
-//
-//        }, label: {
-//            Image(systemName: "xmark.bin")
-//        } )
-//    }
+    var delete: some View {
+
+        Button (action: {
+
+            ContextOperations.batchDelete("Tables", viewContext)
+
+        }, label: {
+            Image(systemName: "xmark.bin")
+        } )
+    }
+    
+    var batchCreate: some View {
+        
+        Button( action: {
+            
+            ContextOperations.batchCreate(viewContext, 10)
+            
+        }, label: {
+            
+            Image(systemName: "plus.diamond")
+        
+        })
+        
+    }
     
     var createNewReservation: some View {
         

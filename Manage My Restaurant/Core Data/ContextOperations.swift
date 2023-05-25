@@ -26,6 +26,20 @@ class ContextOperations {
         }
     }
     
+    static func batchCreate (_ context: NSManagedObjectContext ,_ numberOfTables: Int) {
+        
+        for item in 1...(numberOfTables) {
+            
+            let newTable = Tables(context: context)
+            newTable.tableNumber = Int16(item)
+            newTable.seatingCapacity = 2
+            
+        }
+        
+        ContextOperations.save(context)
+        
+    }
+    
     static func delete(at offsets: IndexSet, fetchResult: FetchedResults<NSManagedObject>, viewContex: NSManagedObjectContext ) {
     
         for index in offsets {
