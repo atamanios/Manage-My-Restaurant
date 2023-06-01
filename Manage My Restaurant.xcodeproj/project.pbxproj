@@ -17,7 +17,6 @@
 		F64B66B029E867CA007E443D /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66AF29E867CA007E443D /* TableView.swift */; };
 		F64B66B229E86EED007E443D /* IndepthTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66B129E86EED007E443D /* IndepthTableView.swift */; };
 		F64B66B629E98053007E443D /* CreateNewReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66B529E98053007E443D /* CreateNewReservation.swift */; };
-		F64B66B829EADE9C007E443D /* DateOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B66B729EADE9C007E443D /* DateOperations.swift */; };
 		F651356429DAAE1F00B16352 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356329DAAE1F00B16352 /* Settings.swift */; };
 		F651356A29DAB13200B16352 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356929DAB13200B16352 /* Onboarding.swift */; };
 		F651356C29DAB35C00B16352 /* TableOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651356B29DAB35C00B16352 /* TableOverview.swift */; };
@@ -43,7 +42,6 @@
 		F64B66AF29E867CA007E443D /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F64B66B129E86EED007E443D /* IndepthTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndepthTableView.swift; sourceTree = "<group>"; };
 		F64B66B529E98053007E443D /* CreateNewReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewReservation.swift; sourceTree = "<group>"; };
-		F64B66B729EADE9C007E443D /* DateOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOperations.swift; sourceTree = "<group>"; };
 		F651356329DAAE1F00B16352 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F651356929DAB13200B16352 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		F651356B29DAB35C00B16352 /* TableOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOverview.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				F651356B29DAB35C00B16352 /* TableOverview.swift */,
 				F660F24B29DC8E9300419354 /* OpenDaysSheet.swift */,
 				F651356F29DAB5BE00B16352 /* Snapshot.swift */,
-				F64B66B729EADE9C007E443D /* DateOperations.swift */,
 				F6BDFB0929FA68AB0074B26E /* UserProfile */,
 				F6BDFB0729FA68540074B26E /* Model */,
 				F6BDFB0829FA68750074B26E /* CustomViewModifiers */,
@@ -245,7 +242,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6BDFB0529FA654B0074B26E /* FetchedObjects.swift in Sources */,
-				F64B66B829EADE9C007E443D /* DateOperations.swift in Sources */,
 				F621D04129D9FF3600229097 /* Persistence.swift in Sources */,
 				F6E6C70429E458F3001C92E5 /* UserSettings.swift in Sources */,
 				F621D04429D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld in Sources */,

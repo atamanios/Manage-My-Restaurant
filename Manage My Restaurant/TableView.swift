@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TableView: View {
     
-    @ObservedObject var tableItem: Tables
+    @ObservedObject var tableItem: Table
         
     var body: some View {
         NavigationStack {

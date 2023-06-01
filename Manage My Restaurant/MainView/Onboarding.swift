@@ -128,7 +128,7 @@ struct Onboarding: View {
                 } else {
 
                     userSettings.updateKeyValues()
-                    ContextOperations.batchDelete("Tables", viewContext)
+                    ContextOperations.batchDelete("Table", viewContext)
                     
                 }
             }

@@ -16,7 +16,7 @@ class ContextOperations {
     
     static func save(_ viewContext: NSManagedObjectContext) {
         guard viewContext.hasChanges else {return}
-        
+
         do {
             try viewContext.save()
         }
@@ -30,8 +30,8 @@ class ContextOperations {
         
         for item in 1...(numberOfTables) {
             
-            let newTable = Tables(context: context)
-            newTable.tableNumber = Int16(item)
+            let newTable = Table(context: context)
+            newTable.tableNumber = Int64(item)
             newTable.seatingCapacity = 2
             
         }
@@ -68,6 +68,64 @@ class ContextOperations {
         
         save(viewContext)
     }
+    
+    static func checkAndRemoveDuplicateTables(_ viewContext: NSManagedObjectContext) {
+        
+        let request = NSFetchRequest<Table>(entityName: "Table")
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Table.tableNumber, ascending: true)]
+        
+        request.predicate = NSPredicate(format: "entity = %@", Table.entity())
+        
+        var result: [Table] = []
+        
+        do {
+            result = try viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching tables \(error)")
+        }
+        
+        result.forEach { table in
+            
+            findDuplicate(table: table, viewContext)
+        }
+        
+        save(viewContext)
+        
+    }
+    
+    static func findDuplicate(table: Table, _ viewContext: NSManagedObjectContext) {
+        
+        let request = NSFetchRequest<Table>(entityName: "Table")
+        request.sortDescriptors = []
+        request.predicate = NSCompoundPredicate(type: .and, subpredicates:
+                                                    [NSPredicate(format: "entity = %@", Table.entity()),
+                                                     NSPredicate(format: "tableNumber = %i", table.tableNumber)])
+        
+        var result: [Table] = []
+        
+        do {
+            result = try viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching table: \(table.tableNumber) and error:  \(error)")
+        }
+        
+        if result.count > 1 {
+            let winner = result.first!
+            result.removeFirst()
+            
+            result.forEach { redundantTable in
+                if let guestSet = redundantTable.toGuest {
+                    for case let guest as Guest in guestSet {
+                        winner.addToToGuest(guest)
+                        redundantTable.removeFromToGuest(guest)
+                    }
+                }
+                viewContext.delete(redundantTable)
+            }
+        }
+        
+    }
+   
 }
 
 

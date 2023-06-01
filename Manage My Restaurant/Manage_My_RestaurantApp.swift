@@ -16,8 +16,6 @@ struct Manage_My_RestaurantApp: App {
         WindowGroup {
             Onboarding()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                
-
         }
     }
 }

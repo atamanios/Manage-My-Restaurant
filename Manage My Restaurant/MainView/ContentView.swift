@@ -15,12 +15,6 @@ struct ContentView: View {
     
     let defaults = UserDefaults.standard
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Tables.tableNumber, ascending: true)],
-        animation: .default)
-    
-    private var tables: FetchedResults<Tables>
-    
     var body: some View {
         
         NavigationStack {
@@ -32,13 +26,21 @@ struct ContentView: View {
                 }
                 Divider()
                 
-                List(tables) { table in
+                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
+                    
+                    List(tables) { table in
                         
-                    ZStack {
-                        NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
-                        
-                        TableView(tableItem: table)
+                        ZStack {
+                            NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
+                            
+                            TableView(tableItem: table)
+                        }
                     }
+                }
+                .onAppear{
+                    
+                    ContextOperations.checkAndRemoveDuplicateTables(viewContext)
+                    
                 }
                 .listStyle(.plain)
             }
@@ -90,7 +92,7 @@ extension ContentView {
 
         Button (action: {
 
-            ContextOperations.batchDelete("Tables", viewContext)
+            ContextOperations.batchDelete("Table", viewContext)
 
         }, label: {
             Image(systemName: "xmark.bin")
@@ -118,16 +120,21 @@ extension ContentView {
             Text("Create New Reservation")
             
         }.buttonStyle(.borderedProminent)
-        
-        
     }
     
+    func buildPredicate() -> NSPredicate {
+
+        let entityPredicate = NSPredicate(format: "entity = %@", Table.entity())
+
+        return entityPredicate
+    }
     
-
+    func buildSortDescriptor() -> [NSSortDescriptor] {
+        
+       return [NSSortDescriptor(keyPath: \Table.tableNumber, ascending: true)]
+        
+    }
 }
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

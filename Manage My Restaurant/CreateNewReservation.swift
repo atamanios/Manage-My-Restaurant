@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CreateNewReservation: View {
     
@@ -68,7 +69,7 @@ struct CreateNewReservation: View {
                     .padding(.bottom, 5)
                     
                 
-                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Tables]) in
+                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
                     
                     List {
                         
@@ -92,12 +93,9 @@ struct CreateNewReservation: View {
                                 activeTable = Int(table.tableNumber)
                             }
                         }
-                    }
-                    
+                    }                    
                     .listStyle(.plain)
                 }
-                
-                
             }
             .padding()
             
@@ -124,39 +122,83 @@ struct CreateNewReservation: View {
     func createNewGuest() {
         
         let newGuest = Guest(context: viewContext)
+        newGuest.reservationID = UUID()
         newGuest.name = guestName
         newGuest.email = guestEmail
         newGuest.phone = guestPhoneNumber
         newGuest.date = reservationDate
-        newGuest.reservation = Tables(context: viewContext)
-        newGuest.tableNumber = Int16(activeTable)
-    
+       
+        addRelation(selectedTableNumber: activeTable, guest: newGuest)
+        
         
         ContextOperations.save(viewContext)
     }
     func buildPredicate() -> NSPredicate {
+//        TODO: How to predicate tables wrt reserved dates
+//        let startingRange = Date(timeInterval: -7200, since: reservationDate)
+//
+//        let endingRange = Date(timeInterval: 7200, since: reservationDate)
+//
+//        let startingPredicate = NSPredicate(format: "date > %@", startingRange as NSDate)
+//
+//        let endingPredicate = NSPredicate(format: "date < %@", endingRange as NSDate)
+
+        let entityPredicate = NSPredicate(format: "entity = %@", Table.entity())
         
-//        let startingRange = Date(timeInterval: -7199, since: reservationDate)
+//        let datePredicate = NSCompoundPredicate(type: .not, subpredicates: [startingPredicate,endingPredicate])
 //
-//        let endingRange = Date(timeInterval: 7199, since: reservationDate)
-//
-//        let startingPredicate = NSPredicate(format: "date < %@", startingRange as NSDate)
-//
-//        let endingPredicate = NSPredicate(format: "date > %@", endingRange as NSDate)
-//
-//        let compoundedPredicate = NSCompoundPredicate(type: .and, subpredicates: [startingPredicate,endingPredicate])
+//        let compoundedPredicate = NSCompoundPredicate(type: .and, subpredicates: [datePredicate,entityPredicate])
 //
 //        return compoundedPredicate
+//
+        return entityPredicate
         
-        return NSPredicate(value: true)
+//        return NSPredicate(value: true)
     }
     
     func buildSortDescriptor() -> [NSSortDescriptor] {
         
         
-       return [NSSortDescriptor(keyPath: \Tables.tableNumber, ascending: true)]
+       return [NSSortDescriptor(keyPath: \Table.tableNumber, ascending: true)]
         
     }
+    
+    func addRelation(selectedTableNumber: Int, guest: Guest) {
+        
+        let request = NSFetchRequest<Table>(entityName: "Table")
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Table.tableNumber, ascending: true)]
+        
+        request.predicate = NSCompoundPredicate(type: .and, subpredicates:
+                                                    [NSPredicate(format: "tableNumber = %i", Int64(selectedTableNumber)),
+                                                     NSPredicate(format: "entity = %@", Table.entity())])
+    
+        
+        if var result = try? viewContext.fetch(request) {
+            
+            print("fetchedresult is: \(result.first?.tableNumber)")
+            
+            result.first?.addToToGuest(guest)
+            
+            guest.tableNumber = result.first!.tableNumber
+            print("The table number is: \(guest.tableNumber)")
+            if result.count > 1 {
+                let winner = result.first
+                result.removeFirst()
+                
+                result.forEach { table in
+                    if let guestSet = table.toGuest {
+                        for case let guest as Guest in guestSet {
+                            table.removeFromToGuest(guest)
+                            winner?.addToToGuest(guest)
+                        }
+                    }
+                    viewContext.delete(table)
+                }
+            }
+        }
+    }
+    
+    
     
 }
 

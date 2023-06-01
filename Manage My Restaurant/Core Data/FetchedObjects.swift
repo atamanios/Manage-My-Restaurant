@@ -21,6 +21,7 @@ struct FetchedObjects<T, Content>: View where T : NSManagedObject, Content : Vie
       sortDescriptors: sortDescriptors,
       predicate: predicate
     )
+      
   }
   
   var body: some View {

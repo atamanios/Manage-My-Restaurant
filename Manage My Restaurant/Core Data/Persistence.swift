@@ -8,6 +8,19 @@
 import CoreData
 import SwiftUI
 
+struct TransactionAuthor {
+    static let app = "app"
+}
+
+struct UserInfoKey {
+    static let storeUUID = "storeUUID"
+    static let transactions = "transactions"
+}
+
+extension Notification.Name {
+    static let cdcksStoreDidChange = Notification.Name("cdcksStoreDidChange")
+}
+
 struct PersistenceController {
     static let shared = PersistenceController()
 
@@ -17,9 +30,9 @@ struct PersistenceController {
         
         for i in 1...10 {
             
-            let newTable = Tables(context: viewContext)
-            newTable.tableNumber = Int16(i)
-            newTable.seatingCapacity = Int16.random(in: 2...4)
+            let newTable = Table(context: viewContext)
+            newTable.tableNumber = Int64(i)
+            newTable.seatingCapacity = Int64.random(in: 2...4)
         }
         
         do {
@@ -55,7 +68,11 @@ struct PersistenceController {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            
+            
         })
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.automaticallyMergesChangesFromParent = true
+
     }
 }
