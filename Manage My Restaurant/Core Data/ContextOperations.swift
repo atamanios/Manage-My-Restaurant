@@ -55,8 +55,11 @@ class ContextOperations {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entityName))
         deleteRequest.resultType = .resultTypeObjectIDs
         
+        
+        
         do {
             let deleteResult = try viewContext.execute(deleteRequest) as? NSBatchDeleteResult
+            
             if let objectIDs = deleteResult?.result as? [NSManagedObjectID] {
         
                 NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: objectIDs], into: [viewContext])

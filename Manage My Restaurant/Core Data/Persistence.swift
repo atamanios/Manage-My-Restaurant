@@ -8,19 +8,6 @@
 import CoreData
 import SwiftUI
 
-struct TransactionAuthor {
-    static let app = "app"
-}
-
-struct UserInfoKey {
-    static let storeUUID = "storeUUID"
-    static let transactions = "transactions"
-}
-
-extension Notification.Name {
-    static let cdcksStoreDidChange = Notification.Name("cdcksStoreDidChange")
-}
-
 struct PersistenceController {
     static let shared = PersistenceController()
 

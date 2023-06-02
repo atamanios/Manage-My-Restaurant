@@ -28,19 +28,24 @@ struct ContentView: View {
                 
                 FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
                     
-                    List(tables) { table in
+                    List {
                         
-                        ZStack {
-                            NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
+                        ForEach(tables) { table in
                             
-                            TableView(tableItem: table)
+                            ZStack {
+                                NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
+                                
+                                TableView(tableItem: table)
+                            }
                         }
+                        .onDelete(perform: deleteItem)
+                        
                     }
                 }
                 .onAppear{
-                    
+
                     ContextOperations.checkAndRemoveDuplicateTables(viewContext)
-                    
+
                 }
                 .listStyle(.plain)
             }
@@ -91,7 +96,7 @@ extension ContentView {
     var delete: some View {
 
         Button (action: {
-
+            ContextOperations.batchDelete("Guest", viewContext)
             ContextOperations.batchDelete("Table", viewContext)
 
         }, label: {
@@ -132,6 +137,15 @@ extension ContentView {
     func buildSortDescriptor() -> [NSSortDescriptor] {
         
        return [NSSortDescriptor(keyPath: \Table.tableNumber, ascending: true)]
+        
+    }
+    
+    func deleteItem (at offsets: IndexSet) {
+        
+//       TODO: Impelemt a delete method for list swipes
+    
+        
+//        ContextOperations.delete(at: offsets, fetchResult: FetchedResults<NSManagedObject>, viewContex: viewContext)
         
     }
 }

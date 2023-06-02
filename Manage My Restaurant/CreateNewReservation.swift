@@ -106,7 +106,6 @@ struct CreateNewReservation: View {
                     Button(action: {
                         
                         createNewGuest()
-                    
                         
 //                     TODO: Create Reservation
                         
@@ -116,9 +115,13 @@ struct CreateNewReservation: View {
                     
                 }
             }
-            
         }
     }
+    
+}
+
+extension CreateNewReservation {
+    
     func createNewGuest() {
         
         let newGuest = Guest(context: viewContext)
@@ -130,10 +133,10 @@ struct CreateNewReservation: View {
        
         addRelation(selectedTableNumber: activeTable, guest: newGuest)
         
-        
         ContextOperations.save(viewContext)
     }
     func buildPredicate() -> NSPredicate {
+        
 //        TODO: How to predicate tables wrt reserved dates
 //        let startingRange = Date(timeInterval: -7200, since: reservationDate)
 //
@@ -172,35 +175,14 @@ struct CreateNewReservation: View {
                                                     [NSPredicate(format: "tableNumber = %i", Int64(selectedTableNumber)),
                                                      NSPredicate(format: "entity = %@", Table.entity())])
     
-        
         if var result = try? viewContext.fetch(request) {
             
-            print("fetchedresult is: \(result.first?.tableNumber)")
-            
             result.first?.addToToGuest(guest)
-            
-            guest.tableNumber = result.first!.tableNumber
-            print("The table number is: \(guest.tableNumber)")
-            if result.count > 1 {
-                let winner = result.first
-                result.removeFirst()
-                
-                result.forEach { table in
-                    if let guestSet = table.toGuest {
-                        for case let guest as Guest in guestSet {
-                            table.removeFromToGuest(guest)
-                            winner?.addToToGuest(guest)
-                        }
-                    }
-                    viewContext.delete(table)
-                }
-            }
+
         }
     }
-    
-    
-    
 }
+
 
 struct CreateNewReservation_Previews: PreviewProvider {
     static var previews: some View {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct IndepthTableView: View {
     
@@ -23,28 +24,54 @@ struct IndepthTableView: View {
                 
             }
             
-            FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (guests:[Guest]) in
-                
                 List {
                     
-                    ForEach(guests) { guest in
+                    ForEach(guests()) { guest in
+                        
                         VStack {
                             Text("The guest name is \(guest.name ?? "unknown")")
                             
                             Text("The date is: \(guest.date?.formatted() ?? "unknown")")
+                            
+                            Text("The table number is: \(guest.toTable?.tableNumber ?? Int64(0))")
                         }
                         .padding(2)
                     }
                 }
             }
+//        }
+    }
+}
+
+extension IndepthTableView {
+    
+    func guests() -> [Guest] {
+        
+        let request: NSFetchRequest<Guest> = Guest.fetchRequest()
+        request.predicate = buildPredicate()
+        request.sortDescriptors = buildSortDescriptor()
+        
+        var fetchedGuests: [Guest] = []
+        
+        do {
+            fetchedGuests = try PersistenceController.shared.container.viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching guests \(error.localizedDescription)")
         }
+        
+        
+        return fetchedGuests
     }
     
     func buildPredicate() -> NSPredicate {
         
-//        let predicate = NSPredicate(format: "tableNumber = %@", tableItem.tableNumber as Int16 )
-//        return predicate
-        return NSPredicate(value: true)
+        var predicate: NSPredicate
+        
+        predicate = NSPredicate(format: "toTable.tableNumber = %i", tableItem.tableNumber )
+        
+        return predicate
+
+        
     }
     
     func buildSortDescriptor() -> [NSSortDescriptor] {
@@ -52,6 +79,7 @@ struct IndepthTableView: View {
         return [NSSortDescriptor(keyPath: \Guest.date, ascending: true)]
         
     }
+    
     
 }
 
