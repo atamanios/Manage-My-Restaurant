@@ -4,6 +4,7 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="numberOfGuest" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="reservationID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="toTable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Table" inverseName="toGuest" inverseEntity="Table"/>

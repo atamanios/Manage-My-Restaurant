@@ -10,7 +10,8 @@ import SwiftUI
 
 @main
 struct Manage_My_RestaurantApp: App {
-    let persistenceController = PersistenceController.shared
+    
+    let persistenceController = PersistenceController.preview
         
     var body: some Scene {
         WindowGroup {

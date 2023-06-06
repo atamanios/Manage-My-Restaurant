@@ -27,6 +27,8 @@
 		F6E6C70429E458F3001C92E5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C70329E458F3001C92E5 /* UserSettings.swift */; };
 		F6E6C70929E47AF8001C92E5 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C70829E47AF8001C92E5 /* DayModel.swift */; };
 		F6E6C70E29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C70D29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift */; };
+		F6EC2C842A2DB5C300D619D6 /* AvailableTableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC2C832A2DB5C300D619D6 /* AvailableTableList.swift */; };
+		F6EC2C872A2E001B00D619D6 /* NewReservationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EC2C862A2E001B00D619D6 /* NewReservationForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		F6E6C70329E458F3001C92E5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		F6E6C70829E47AF8001C92E5 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		F6E6C70D29E48FC8001C92E5 /* iOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
+		F6EC2C832A2DB5C300D619D6 /* AvailableTableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableTableList.swift; sourceTree = "<group>"; };
+		F6EC2C862A2E001B00D619D6 /* NewReservationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReservationForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,12 +92,9 @@
 				F651357129DAEFE400B16352 /* Manage My Restaurant.entitlements */,
 				F621D03729D9FF3500229097 /* Manage_My_RestaurantApp.swift */,
 				F6BDFB0A29FA69240074B26E /* MainView */,
-				F64B66B529E98053007E443D /* CreateNewReservation.swift */,
-				F64B66AF29E867CA007E443D /* TableView.swift */,
-				F64B66B129E86EED007E443D /* IndepthTableView.swift */,
-				F651356B29DAB35C00B16352 /* TableOverview.swift */,
-				F660F24B29DC8E9300419354 /* OpenDaysSheet.swift */,
-				F651356F29DAB5BE00B16352 /* Snapshot.swift */,
+				F64778412A2F849100D04B3C /* IndepthTableView */,
+				F64778422A2F84D300D04B3C /* SnapshotView */,
+				F6EC2C852A2DB5CC00D619D6 /* NewReservationView */,
 				F6BDFB0929FA68AB0074B26E /* UserProfile */,
 				F6BDFB0729FA68540074B26E /* Model */,
 				F6BDFB0829FA68750074B26E /* CustomViewModifiers */,
@@ -112,6 +113,22 @@
 				F621D03E29D9FF3600229097 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F64778412A2F849100D04B3C /* IndepthTableView */ = {
+			isa = PBXGroup;
+			children = (
+				F64B66B129E86EED007E443D /* IndepthTableView.swift */,
+			);
+			path = IndepthTableView;
+			sourceTree = "<group>";
+		};
+		F64778422A2F84D300D04B3C /* SnapshotView */ = {
+			isa = PBXGroup;
+			children = (
+				F651356F29DAB5BE00B16352 /* Snapshot.swift */,
+			);
+			path = SnapshotView;
 			sourceTree = "<group>";
 		};
 		F64B66AE29E83E8C007E443D /* Extension */ = {
@@ -163,8 +180,21 @@
 			children = (
 				F651356929DAB13200B16352 /* Onboarding.swift */,
 				F621D03929D9FF3500229097 /* ContentView.swift */,
+				F64B66AF29E867CA007E443D /* TableView.swift */,
+				F660F24B29DC8E9300419354 /* OpenDaysSheet.swift */,
+				F651356B29DAB35C00B16352 /* TableOverview.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		F6EC2C852A2DB5CC00D619D6 /* NewReservationView */ = {
+			isa = PBXGroup;
+			children = (
+				F64B66B529E98053007E443D /* CreateNewReservation.swift */,
+				F6EC2C862A2E001B00D619D6 /* NewReservationForm.swift */,
+				F6EC2C832A2DB5C300D619D6 /* AvailableTableList.swift */,
+			);
+			path = NewReservationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +281,7 @@
 				F651357029DAB5BE00B16352 /* Snapshot.swift in Sources */,
 				F64B66AD29E83C82007E443D /* ShortString.swift in Sources */,
 				F651356A29DAB13200B16352 /* Onboarding.swift in Sources */,
+				F6EC2C842A2DB5C300D619D6 /* AvailableTableList.swift in Sources */,
 				F64B66B229E86EED007E443D /* IndepthTableView.swift in Sources */,
 				F651356429DAAE1F00B16352 /* Settings.swift in Sources */,
 				F621D03A29D9FF3500229097 /* ContentView.swift in Sources */,
@@ -259,6 +290,7 @@
 				F64B66B029E867CA007E443D /* TableView.swift in Sources */,
 				F6E6C70029E4303A001C92E5 /* ContextOperations.swift in Sources */,
 				F621D03829D9FF3500229097 /* Manage_My_RestaurantApp.swift in Sources */,
+				F6EC2C872A2E001B00D619D6 /* NewReservationForm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

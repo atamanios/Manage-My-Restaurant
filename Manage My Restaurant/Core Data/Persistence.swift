@@ -12,7 +12,9 @@ struct PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
+        
         let result = PersistenceController(inMemory: true)
+        
         let viewContext = result.container.viewContext
         
         for i in 1...10 {
@@ -20,6 +22,17 @@ struct PersistenceController {
             let newTable = Table(context: viewContext)
             newTable.tableNumber = Int64(i)
             newTable.seatingCapacity = Int64.random(in: 2...4)
+            
+            let newGuest = Guest(context: viewContext)
+            newGuest.date = .init(timeIntervalSinceNow: Double(i * 10))
+            newGuest.email = "abc\(i)@defg.com"
+            newGuest.name = "abc\(i)"
+            newGuest.numberOfGuest = Int64.random(in: 2...4)
+            newGuest.reservationID = UUID()
+            newGuest.phone = "\(i)"
+            
+            newTable.addToToGuest(newGuest)
+            
         }
         
         do {
