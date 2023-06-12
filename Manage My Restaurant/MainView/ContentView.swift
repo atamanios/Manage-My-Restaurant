@@ -13,6 +13,8 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var userSettings: UserSettings
     
+    @State private var today: Date = .now
+    
     let defaults = UserDefaults.standard
     
     var body: some View {
@@ -35,7 +37,7 @@ struct ContentView: View {
                             ZStack {
                                 NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
                                 
-                                TableView(tableItem: table)
+                                TableView(tableItem: table, date: $today)
                             }
                         }
                         .onDelete(perform: deleteItem)
@@ -108,7 +110,7 @@ extension ContentView {
         
         Button( action: {
             
-            ContextOperations.batchCreate(viewContext, 10)
+            ContextOperations.batchCreate(viewContext, 5)
             
         }, label: {
             

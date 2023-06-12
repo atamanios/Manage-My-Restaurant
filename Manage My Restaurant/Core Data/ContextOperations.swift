@@ -54,9 +54,7 @@ class ContextOperations {
         
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: entityName))
         deleteRequest.resultType = .resultTypeObjectIDs
-        
-        
-        
+
         do {
             let deleteResult = try viewContext.execute(deleteRequest) as? NSBatchDeleteResult
             

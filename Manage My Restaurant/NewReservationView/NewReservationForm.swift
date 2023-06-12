@@ -15,8 +15,6 @@ struct NewReservationForm: View {
     @Binding var numberOfGuest: Int
     @Binding var reservationDate: Date
     
-    
-    
     var body: some View {
         
         VStack {
@@ -87,6 +85,15 @@ struct NewReservationForm: View {
         .padding(.horizontal, 5)
         
     }
+    
+}
+
+extension NewReservationForm {
+    
+// TODO: Implement a reservation hour minute check
+    
+    
+    
     
 }
 

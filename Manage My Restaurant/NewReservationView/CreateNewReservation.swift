@@ -23,8 +23,6 @@ struct CreateNewReservation: View {
     @State var numberOfGuest = 1
     
 //    TODO: predicate calls reservationDate variable before it is initialized. Find another method.
-        
-//    TODO: move views to extension for code reading clarity
     
     var body: some View {
         
@@ -32,7 +30,7 @@ struct CreateNewReservation: View {
                         
                 NewReservationForm(guestName: $guestName, guestPhoneNumber: $guestPhoneNumber, guestEmail: $guestEmail, numberOfGuest: $numberOfGuest, reservationDate: $reservationDate)
                     
-                AvailableTableList(activeTable: $activeTable)
+            AvailableTableList(activeTable: $activeTable, reservationDate: $reservationDate)
                 
            
             
@@ -68,7 +66,7 @@ extension CreateNewReservation {
         newGuest.phone = guestPhoneNumber
         newGuest.date = reservationDate
         newGuest.numberOfGuest = Int64(numberOfGuest)
-       
+        
         addRelation(selectedTableNumber: activeTable, guest: newGuest)
         
         ContextOperations.save(viewContext)
@@ -87,6 +85,9 @@ extension CreateNewReservation {
         if var result = try? viewContext.fetch(request) {
             
             result.first?.addToToGuest(guest)
+            
+            guest.tableNumber = result.first?.tableNumber ?? 0
+            
 
         }
     }
