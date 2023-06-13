@@ -23,13 +23,23 @@ struct TableView: View {
                 
                 HStack {
                     
-                    Text("Number: \(tableItem.tableNumber)")
+                        Text("\(tableItem.tableNumber)")
+                        .padding(6)
+                        .overlay (
+                            Circle()
+                                .stroke(.black, lineWidth: 2))
                     
                     Spacer()
                     
-                    Text("Number of Seating: \(tableItem.seatingCapacity)")
+                    Image(systemName: "chair")
+                    Text("\(tableItem.seatingCapacity)")
                     
-                }.padding(.vertical)
+                }
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
+                .padding(.bottom, 5)
+                
+                Spacer()
                 
                 ScrollView(.horizontal) {
                     
@@ -47,16 +57,15 @@ struct TableView: View {
                         
                     }
                 }
+                .padding(.bottom, 10)
             }
-            .padding()
-            .frame(height:100)
+            .padding(.horizontal, 10)
+            .frame(height:125)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(.black, lineWidth: 1))
         }
     }
-    
-
-    
-    
-    
     
 }
 
@@ -72,7 +81,6 @@ extension TableView {
         
         request.predicate = NSCompoundPredicate(type: .and, subpredicates: [tablePredicate, datePredicate])
         
-//        request.predicate = tablePredicate
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
         var fetchedGuests: [Guest] = []

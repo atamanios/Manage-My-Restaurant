@@ -21,104 +21,69 @@ struct ContentView: View {
         
         NavigationStack {
             
-            VStack {
+            TabView {
                 
-                ZStack {
-                    NavigationLink(destination: Snapshot()) { TableOverview() }.tint(.black)
-                }
-                Divider()
-                
-                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
-                    
-                    List {
-                        
-                        ForEach(tables) { table in
-                            
-                            ZStack {
-                                NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
-                                
-                                TableView(tableItem: table, date: $today)
-                            }
-                        }
-                        .onDelete(perform: deleteItem)
-                        
+                TableListView(today: $today)
+                    .tabItem {
+                        Label("Tables", systemImage: "table.furniture")
                     }
-                }
-                .onAppear{
-
-                    ContextOperations.checkAndRemoveDuplicateTables(viewContext)
-
-                }
-                .listStyle(.plain)
+                
+                GuestListView(today: $today)
+                    .tabItem {
+                        Label("Guest List", systemImage: "person.3")
+                    }
+                
+                
+                CreateNewReservation()
+                    .tabItem {
+                        Label("New Reservation", systemImage: "rectangle.and.pencil.and.ellipsis")
+                    }
+                
+                
+                
+                
             }
+            
+            
+            
+            //            VStack {
+            //
+            //                ZStack {
+            //                    NavigationLink(destination: Snapshot()) { TableOverview() }.tint(.black)
+            //                }
+            //                Divider()
+            //
+            //                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
+            //
+            //                    List {
+            //
+            //                            ForEach(tables) { table in
+            //
+            //                                ZStack {
+            //                                    NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
+            //
+            //                                    TableView(tableItem: table, date: $today)
+            //                                }
+            //                            }
+            //                    }
+            //                    .listStyle(.plain)
+            //
+            //                }
+            //                .onAppear{
+            //
+            //                    ContextOperations.checkAndRemoveDuplicateTables(viewContext)
+            //                }
+//        }
             .toolbar {
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    settings
-                }
+                HeaderView()
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    delete
-                }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    batchCreate
-                }
-                
-                ToolbarItem(placement: .bottomBar) {
-                    
-                   createNewReservation
-                }
-                
-                ToolbarItem(placement: .principal) {
-                    
-                    Image(systemName: "apple.logo")
-                    
-                }
             }
         }
     }
 }
 
 extension ContentView {
-    
-    var settings: some View {
-        
-        NavigationLink {
-            
-            Settings().environmentObject(userSettings)
-            
-        } label: {
-            
-            Image(systemName: "slider.horizontal.3")
-                .font(.title3)
-        }
-    }
-    
-    var delete: some View {
-
-        Button (action: {
-            ContextOperations.batchDelete("Guest", viewContext)
-            ContextOperations.batchDelete("Table", viewContext)
-
-        }, label: {
-            Image(systemName: "xmark.bin")
-        } )
-    }
-    
-    var batchCreate: some View {
-        
-        Button( action: {
-            
-            ContextOperations.batchCreate(viewContext, 5)
-            
-        }, label: {
-            
-            Image(systemName: "plus.diamond")
-        
-        })
-        
-    }
     
     var createNewReservation: some View {
         

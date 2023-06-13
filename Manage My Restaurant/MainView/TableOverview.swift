@@ -11,15 +11,27 @@ import CoreData
 struct TableOverview: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var userSettings: UserSettings
+    
+    
+    
+    let day = Date.now
     
     var body: some View {
+        
         VStack {
             
-            Text("Current Date")
+            HStack {
+                
+                Text(userSettings.nameOfTheRestaurant.capitalized)
+                
+                Text(day.formatted(date: .abbreviated, time: .shortened))
+                
+            }
             
-            Text("Table Overview")
+            Text("Occupancy").font(.title3)
             
-            Text("Occupancy")
+            
             
         }
     }
