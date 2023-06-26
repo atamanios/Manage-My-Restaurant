@@ -15,22 +15,24 @@ let kClosingHours = "sync_kClosingHours"
 let kRestaurantLogo = "sync_kRestaurantLogo"
 
 class UserSettings: ObservableObject {
+//    TODO: set openDays, opening hour and closing hour as datecomponents
+//    Compute Date for particular day from datecomponents
     
     let defaults = UserDefaults.standard
     
     @Published var isOnboarded: Bool
     @Published var nameOfTheRestaurant: String
     @Published var openDays: [Day]
-    @Published var openingHours: Date
-    @Published var closingHours: Date
+    @Published var openingHours: DateComponents
+    @Published var closingHours: DateComponents
     
     init() {
        
         isOnboarded = false
         nameOfTheRestaurant = ""
         openDays = [.init(day: .monday), .init(day: .tuesday), .init(day: .wednesday), .init(day: .thursday), .init(day: .friday), .init(day: .saturday), .init(day: .sunday)]
-        openingHours = .now
-        closingHours = .now
+        openingHours = Calendar.current.dateComponents([.hour, .minute], from: .now)
+        closingHours = Calendar.current.dateComponents([.hour, .minute], from: Date(timeIntervalSinceNow: 36000))
         
     }
         
@@ -38,10 +40,9 @@ class UserSettings: ObservableObject {
         
         defaults.set(isOnboarded, forKey: kIsOnboarded)
         defaults.set(nameOfTheRestaurant, forKey: kNameOfTheRestaurant)
-//        defaults.set(openDays, forKey: kOpenDays)
+        
         encodeCustomObject()
-        defaults.set(openingHours, forKey: kOpeningHours)
-        defaults.set(closingHours, forKey: kClosingHours)
+
 
     }
     
@@ -49,10 +50,8 @@ class UserSettings: ObservableObject {
         
         isOnboarded = defaults.bool(forKey: kIsOnboarded)
         nameOfTheRestaurant = defaults.string(forKey: kNameOfTheRestaurant) ?? ""
-//        openDays = defaults.object(forKey: kOpenDays) as! [Day]
+        
         decodeCustomObject()
-        openingHours = defaults.object(forKey: kOpeningHours) as! Date
-        closingHours = defaults.object(forKey: kClosingHours) as! Date
         
     }
     
@@ -68,6 +67,30 @@ class UserSettings: ObservableObject {
             
             print("Unable to encode: \(error)")
             
+        }
+        
+        do {
+            
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(openingHours)
+            
+            defaults.set(data, forKey: kOpeningHours)
+            
+        } catch (let error) {
+            
+            print("Unable to encode: \(error)")
+        }
+        
+        do {
+            
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(closingHours)
+            
+            defaults.set(data, forKey: kClosingHours)
+            
+        } catch (let error) {
+            
+            print("Unable to encode: \(error)")
         }
         
         
@@ -89,6 +112,31 @@ class UserSettings: ObservableObject {
             }
         }
         
+        if let data = defaults.data(forKey: kOpeningHours) {
+            
+            do {
+                let decoder = JSONDecoder()
+                let data = try decoder.decode(DateComponents.self, from: data)
+                
+                openingHours = data
+            } catch (let error) {
+                
+                print("Unable to decode \(error)")
+            }
+        }
+        
+        if let data = defaults.data(forKey: kClosingHours) {
+            
+            do {
+                let decoder = JSONDecoder()
+                let data = try decoder.decode(DateComponents.self, from: data)
+                
+                closingHours = data
+            } catch (let error) {
+                
+                print("Unable to decode \(error)")
+            }
+        }
     }
     
     private func startUpCheck() -> Bool {

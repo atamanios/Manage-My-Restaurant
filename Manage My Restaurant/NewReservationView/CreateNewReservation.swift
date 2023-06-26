@@ -12,8 +12,6 @@ struct CreateNewReservation: View {
     
     @Environment(\.managedObjectContext) var viewContext
     
-    
-    
     @State var guestName = ""
     @State var guestPhoneNumber = ""
     @State var guestEmail = ""
@@ -31,8 +29,6 @@ struct CreateNewReservation: View {
                 NewReservationForm(guestName: $guestName, guestPhoneNumber: $guestPhoneNumber, guestEmail: $guestEmail, numberOfGuest: $numberOfGuest, reservationDate: $reservationDate)
                     
             AvailableTableList(activeTable: $activeTable, reservationDate: $reservationDate)
-                
-           
             
             .toolbar {
             

@@ -12,7 +12,7 @@ struct AvailableTableList: View {
     
     @Environment(\.managedObjectContext) var viewContext
     
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
     @Binding var activeTable: Int
     @Binding var reservationDate: Date
@@ -29,10 +29,7 @@ struct AvailableTableList: View {
             List {
                 
                 ForEach(tables) { table in
-                    
-                        
-                        let _ = print("The table is \(table.tableNumber) and \(table) ")
-                        
+            
                         HStack {
                             
                             Image(systemName: activeTable == Int(table.tableNumber) ?  "circle.inset.filled" : "circle" )

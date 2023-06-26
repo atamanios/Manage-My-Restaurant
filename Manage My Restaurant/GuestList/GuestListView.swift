@@ -23,20 +23,7 @@ struct GuestListView: View {
                 
                 if guests.isEmpty {
                     
-                    HStack {
-                        
-                        Spacer()
-                    
-                        Text("NO RESERVATION FOR TODAY")
-                            .font(.title2)
-                            .padding()
-                        
-                        Spacer()
-                    }
-                    .background(Color.gray)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.black, lineWidth: 1))
+                    noGuest
                     
                 } else {
                     
@@ -85,6 +72,28 @@ extension GuestListView {
         return [NSSortDescriptor(keyPath: \Guest.date, ascending: true)]
         
     }
+    
+    var noGuest: some View {
+        
+        HStack {
+            
+            Spacer()
+        
+            Text("NO RESERVATION FOR TODAY")
+                .font(.title2)
+                .padding()
+            
+            Spacer()
+        }
+        
+        .background(Color.gray)
+        .overlay(
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(.black, lineWidth: 1))
+        .padding(.horizontal, 10)
+        
+    }
+    
 }
 
 struct GuestListView_Previews: PreviewProvider {

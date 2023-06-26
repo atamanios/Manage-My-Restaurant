@@ -12,11 +12,15 @@ import SwiftUI
 struct Manage_My_RestaurantApp: App {
     
     let persistenceController = PersistenceController.shared
+    
+    @StateObject var userSettings = UserSettings()
+    
         
     var body: some Scene {
         WindowGroup {
             Onboarding()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(userSettings)
         }
     }
 }

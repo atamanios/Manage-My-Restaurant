@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 
 
@@ -18,18 +19,20 @@ struct Onboarding: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @StateObject var userSettings = UserSettings()
+    @EnvironmentObject private var userSettings: UserSettings
     
     let defaults = UserDefaults.standard
     
     @State var numberOfTables = 1
     @State var openDaysSheet = false
+    @State var openHour: Date = .now
+    @State var closeHour: Date = Date(timeIntervalSinceNow: 36000)
     
     var body: some View {
         
         NavigationStack {
             
-            VStack{
+            VStack {
                 
                 Spacer()
                 
@@ -38,16 +41,18 @@ struct Onboarding: View {
                     Spacer()
                 }
                 .padding(.vertical, 3)
-    
+                
                 TextField("Name of the Restaurant", text: $userSettings.nameOfTheRestaurant)
                     .padding(8)
                     .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(lineWidth: 1).foregroundColor(.gray))
                     .padding(.bottom, 10)
+                
                 HStack {
                     
                     Text("Please select the number of tables in the restaurant").multilineTextAlignment(.leading)
                         .frame(width:200)
                     Spacer()
+                    
                     Picker("Number of Tables", selection: $numberOfTables) {
                         
                         ForEach(1...15, id: \.self) {
@@ -55,17 +60,22 @@ struct Onboarding: View {
                             Text("\($0)")
                         }
                     }
+                    .onChange(of: numberOfTables) { newValue in
+                        print("Selected value is \(newValue)")
+                    }
+                    .pickerStyle(.wheel)
                 }
                 .padding(8)
                 .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(lineWidth: 1).foregroundColor(.gray))
                 .padding(.bottom, 10)
-            
-//                TODO: open days does not work properly
-//                It forces isOpen to true all the time.
-//                Might require creation of dummy array to transfer open days and display them.
+                
+                //                TODO: open days does not work properly
+                //                It forces isOpen to true all the time.
+                //                Might require creation of dummy array to transfer open days and display them.
                 HStack {
                     
                     Text("Open days")
+                    
                     Spacer()
                     
                     HStack {
@@ -90,43 +100,48 @@ struct Onboarding: View {
                 .onTapGesture {
                     openDaysSheet.toggle()
                 }
-            
-                DatePicker("Opening Hours", selection: $userSettings.openingHours, displayedComponents: .hourAndMinute).onChange(of: userSettings.openingHours) { newValue in
-                    print(newValue.description)
-                }
                 
-                DatePicker("Closing Hours", selection: $userSettings.closingHours, displayedComponents: .hourAndMinute).onChange(of: userSettings.closingHours) { newValue in
-                    print(newValue.description)
-                }
+                DatePicker("Opening Hours", selection: $openHour, displayedComponents: .hourAndMinute)
+                    .onAppear {
+                        UIDatePicker.appearance().minuteInterval = 15
+                    }
+                    .onDisappear {
+                        UIDatePicker.appearance().minuteInterval = 1
+                    }
+                
+                DatePicker("Closing Hours", selection: $closeHour, displayedComponents: .hourAndMinute)
+                    .onAppear {
+                        UIDatePicker.appearance().minuteInterval = 15
+                    }
+                    .onDisappear {
+                        UIDatePicker.appearance().minuteInterval = 1
+                    }
                 
                 Spacer()
             }
             .padding(.horizontal)
             
             .sheet(isPresented: $openDaysSheet) {
-
+                
                 OpenDaysSheet()
-                    .environmentObject(userSettings)
             }
             
             .navigationDestination(isPresented: $userSettings.isOnboarded) {
                 
                 ContentView()
-                    .environment(\.managedObjectContext, viewContext)
-                    .environmentObject(userSettings)
                     .navigationBarBackButtonHidden()
-                    
+                
             }
             .onAppear {
                 
-//                TODO: Guard check network connection and icloud sync!!!
+                //                TODO: Guard check network connection and icloud sync!!!
                 
                 if defaults.bool(forKey: kIsOnboarded) {
-
+                    
                     userSettings.resetPublishedValues()
-
+                    
                 } else {
-
+                    
                     userSettings.updateKeyValues()
                     ContextOperations.batchDelete("Table", viewContext)
                     
@@ -138,12 +153,13 @@ struct Onboarding: View {
                     
                     Button(action: {
                         
-    //                TODO: Check new table addition
-    //                    TODO: Implement save operation
+                        //                TODO: Check new table addition
+                        //                    TODO: Implement save operation
+                        
+                        dateToDateComponents()
                         createTables()
                         userSettings.isOnboarded = true
                         userSettings.updateKeyValues()
-                        
                         
                     }, label: {
                         
@@ -154,13 +170,27 @@ struct Onboarding: View {
                 }
             }
         }
+    
     }
+}
+
+extension Onboarding {
     
     func createTables() {
         
         ContextOperations.batchCreate(viewContext, numberOfTables)
         
     }
+    
+    func dateToDateComponents() {
+        
+        userSettings.openingHours = Calendar.current.dateComponents([.hour, .minute], from: openHour)
+        
+        userSettings.closingHours = Calendar.current.dateComponents([.hour, .minute], from: closeHour)
+        
+    }
+    
+    
 }
 
 struct Onboarding_Previews: PreviewProvider {

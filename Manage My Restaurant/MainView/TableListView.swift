@@ -10,42 +10,32 @@ import SwiftUI
 struct TableListView: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
     @Binding var today: Date
     
     var body: some View {
         
-        VStack {
+        FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
             
-            ZStack {
-                NavigationLink(destination: Snapshot()) { TableOverview() }.tint(.black)
-            }
-            Divider()
-            
-            FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
-                
-                List {
+            List {
+                    
+                    ForEach(tables) { table in
                         
-                        ForEach(tables) { table in
+                        ZStack {
+                            NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
                             
-                            ZStack {
-                                NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
-                                
-                                TableView(tableItem: table, date: $today)
-                            }
+                            TableView(tableItem: table, date: $today)
                         }
-                }
-                .listStyle(.plain)
-            
+                    }
             }
-            .onAppear{
-
-                ContextOperations.checkAndRemoveDuplicateTables(viewContext)
-            }
+            .listStyle(.plain)
+        
         }
-        
-        
+        .onAppear{
+
+            ContextOperations.checkAndRemoveDuplicateTables(viewContext)
+        }
     }
 }
 extension TableListView {

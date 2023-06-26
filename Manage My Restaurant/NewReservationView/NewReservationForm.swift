@@ -71,7 +71,6 @@ struct NewReservationForm: View {
             DatePicker("Reserve Date & Time", selection: $reservationDate, in: Date()...Date().addingTimeInterval(15552000))
                 .onAppear {
                     UIDatePicker.appearance().minuteInterval = 15
-                    
                 }
                 .onDisappear{
                     UIDatePicker.appearance().minuteInterval = 1
@@ -79,8 +78,11 @@ struct NewReservationForm: View {
             
                 .tint(.red)
                 .padding(.bottom, 5)
+            
             Divider()
+            
                 .padding(.bottom, 5)
+            
         }
         .padding(.horizontal, 5)
         

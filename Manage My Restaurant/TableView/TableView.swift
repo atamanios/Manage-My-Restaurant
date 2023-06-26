@@ -91,7 +91,7 @@ extension TableView {
             print("Error fetching \(error)")
         }
         
-        print("list of Guests \(fetchedGuests)")
+      
         
         return fetchedGuests
     }

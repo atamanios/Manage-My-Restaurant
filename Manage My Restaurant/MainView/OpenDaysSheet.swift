@@ -11,7 +11,7 @@ struct OpenDaysSheet: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
     var body: some View {
     

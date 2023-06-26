@@ -11,69 +11,31 @@ import CoreData
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
-    @State private var today: Date = .now
-    
-    let defaults = UserDefaults.standard
+    @State private var day: Date = .now
     
     var body: some View {
         
         NavigationStack {
             
+            TopSectionView(today: $day)
+            
             TabView {
                 
-                TableListView(today: $today)
+                TableListView(today: $day)
                     .tabItem {
                         Label("Tables", systemImage: "table.furniture")
                     }
-                
-                GuestListView(today: $today)
+                GuestListView(today: $day)
                     .tabItem {
                         Label("Guest List", systemImage: "person.3")
                     }
-                
-                
-                CreateNewReservation()
+                AvailableTimeView(day: $day, numberOfGuest: 2)
                     .tabItem {
                         Label("New Reservation", systemImage: "rectangle.and.pencil.and.ellipsis")
                     }
-                
-                
-                
-                
             }
-            
-            
-            
-            //            VStack {
-            //
-            //                ZStack {
-            //                    NavigationLink(destination: Snapshot()) { TableOverview() }.tint(.black)
-            //                }
-            //                Divider()
-            //
-            //                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptor()) { (tables: [Table]) in
-            //
-            //                    List {
-            //
-            //                            ForEach(tables) { table in
-            //
-            //                                ZStack {
-            //                                    NavigationLink(destination: IndepthTableView(tableItem: table)) { EmptyView() }.opacity(0.0)
-            //
-            //                                    TableView(tableItem: table, date: $today)
-            //                                }
-            //                            }
-            //                    }
-            //                    .listStyle(.plain)
-            //
-            //                }
-            //                .onAppear{
-            //
-            //                    ContextOperations.checkAndRemoveDuplicateTables(viewContext)
-            //                }
-//        }
             .toolbar {
                 
                 HeaderView()

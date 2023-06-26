@@ -11,9 +11,7 @@ import CoreData
 struct TableOverview: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var userSettings: UserSettings
-    
-    
+    @EnvironmentObject private var userSettings: UserSettings
     
     let day = Date.now
     
@@ -30,9 +28,7 @@ struct TableOverview: View {
             }
             
             Text("Occupancy").font(.title3)
-            
-            
-            
+
         }
     }
 }

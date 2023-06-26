@@ -12,7 +12,7 @@ struct Settings: View {
     
     
 //  TODO: below is mock data, unify it with onboarding variables
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject private var userSettings: UserSettings
     
     var body: some View {
         
@@ -43,14 +43,17 @@ extension Settings {
             }
             
             HStack{
+                
                 Text("Opening Hours: ")
-                Text("\(userSettings.openingHours)")
+                Text("\(userSettings.openingHours.hour!):\(userSettings.openingHours.minute!)")
                 
             }
             
             HStack {
+                
                 Text("Closing Hours: ")
-                Text("\(userSettings.closingHours)")
+                Text("\(userSettings.closingHours.hour!):\(userSettings.closingHours.minute!)")
+                
             }
         }
         .listStyle(.plain)
