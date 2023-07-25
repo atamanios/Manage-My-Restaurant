@@ -10,6 +10,8 @@ import SwiftUI
 struct TopSectionView: View {
     
     @Binding var today: Date
+    @Binding var showGuestNumberPicker: Bool
+    @Binding var numberOfGuest: Int
     
     var body: some View {
         
@@ -24,9 +26,25 @@ struct TopSectionView: View {
                 DatePicker("Date", selection: $today, in: Date()...Date(timeIntervalSinceNow: 15552000), displayedComponents: .date)
                     .tint(.red)
                     .padding(.bottom, 5)
-        
+                
                 Spacer()
+                
             }
+                if showGuestNumberPicker {
+                    
+                    HStack {
+                        
+                        Text("Choose Number of Guest")
+                        
+                        Picker("Number of Guest", selection: $numberOfGuest) {
+                            
+                            ForEach(2...10, id: \.self) {
+                                
+                                Text("\($0)")
+                            }
+                        }
+                    }
+                }
         }
         .background(Color.mint)
         .padding(.top, 5)

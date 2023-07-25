@@ -15,7 +15,7 @@ struct CreateNewReservation: View {
     @State var guestName = ""
     @State var guestPhoneNumber = ""
     @State var guestEmail = ""
-    @State var reservationDate:Date = .now
+    @Binding var reservationDate:Date
     @State var activeTable = 1
     @State var isDatePickerPresented = false
     @State var numberOfGuest = 1
@@ -26,7 +26,7 @@ struct CreateNewReservation: View {
         
         NavigationStack {
                         
-                NewReservationForm(guestName: $guestName, guestPhoneNumber: $guestPhoneNumber, guestEmail: $guestEmail, numberOfGuest: $numberOfGuest, reservationDate: $reservationDate)
+            NewReservationForm(guestName: $guestName, guestPhoneNumber: $guestPhoneNumber, guestEmail: $guestEmail, numberOfGuest: $numberOfGuest, reservationDate: $reservationDate)
                     
             AvailableTableList(activeTable: $activeTable, reservationDate: $reservationDate)
             
@@ -92,6 +92,6 @@ extension CreateNewReservation {
 
 struct CreateNewReservation_Previews: PreviewProvider {
     static var previews: some View {
-        CreateNewReservation()
+        CreateNewReservation(reservationDate: .constant(.now))
     }
 }

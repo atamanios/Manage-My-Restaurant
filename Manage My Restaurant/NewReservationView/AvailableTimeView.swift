@@ -14,66 +14,78 @@ struct AvailableTimeView: View {
     @EnvironmentObject private var userSettings: UserSettings
 
     @Binding var day: Date
-    @State var numberOfGuest: Int
+    @Binding var numberOfGuest: Int
     
     let columns = [
         GridItem(.flexible()),
+//        GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    @State var timeList = [Date]()
     
     var body: some View {
         
         NavigationStack {
             
             ScrollView {
-            
-                    LazyVGrid(columns: columns) {
+                
+                LazyVGrid(columns: columns) {
+                    
+                    ForEach($timeList, id:\.self) { $mark in
                         
-                        ForEach(intervaledWorkingHours(), id:\.self) { mark in
-
-                            Text(mark.formatted(date: .omitted, time: .shortened))
-
+                        FetchedObjects(predicate: buildPredicate(mark, numberOfGuest), sortDescriptors: buildSortDescriptor()) { (tables:[Table]) in
+                            
+                            NavigationLink(destination: CreateNewReservation(reservationDate: $mark)) {
+                                
+                                HStack {
+                                    
+                                    Text(mark.formatted(date: .omitted, time: .shortened))
+                                        .padding(.horizontal, 5)
+                                        .frame(width: 100)
+                                    
+                                        .padding(.horizontal, 2)
+                                    
+                                    Text("\(tables.count)")
+                                    
+                                }
+                                
+                            }
+                            .buttonStyle(.borderedProminent)
+                        }
                     }
+                    
                 }
             }
         }
+        .onAppear {
+//            TODO: PAge doesnt refresh when date changes
+            timeList = intervaledWorkingHours()
+
+        }
+        
+        .onChange(of: day) { _ in
+            timeList = intervaledWorkingHours()
+        }
     }
+        
 }
 
 extension AvailableTimeView {
     
-    func buildPredicate(_ time: Date) -> NSPredicate {
-        
-        var openingHour = {
-         
-            var date = Calendar.current.dateComponents([.day, .month, .year], from: day)
-            date.hour = userSettings.openingHours.hour
-            date.minute = userSettings.openingHours.minute
-            
-            var returnedOpeningHour = Calendar.current.date(from: date)!
-            
-            return returnedOpeningHour as NSDate
-           
-        }
-        
-        var closingHour = {
-            
-            var date = Calendar.current.dateComponents([.day, .month, .year], from: day)
-            date.hour = userSettings.closingHours.hour
-            date.minute = userSettings.closingHours.minute
-    
-            var returnedClosingHour = Calendar.current.date(from: date)!
-            
-            return returnedClosingHour as NSDate
-        }
-        
-        let workingHoursPredicate = NSPredicate(format: "date > %@ AND date < %@" , openingHour(), closingHour())
-        
-        let reservationTimePredicate = NSPredicate(format: "NOT date >  %@ AND NOT date < %@", NSDate(timeInterval: -7199, since: time), NSDate(timeInterval: 7199, since: time))
+    func buildPredicate(_ time: Date, _ seatingCapacity: Int) -> NSPredicate {
         
         let entityPredicate = NSPredicate(format: "entity = %@", Table.entity())
         
-        let compoundPredicate =  NSCompoundPredicate(type: .and, subpredicates: [workingHoursPredicate, reservationTimePredicate, entityPredicate])
+        let tableCapacityPredicate = NSPredicate(format: "seatingCapacity => %i", Int64(seatingCapacity))
+        
+        let timePredicate = NSPredicate(format: "ANY toGuest.date > %@ AND ANY toGuest.date < %@" , NSDate(timeInterval: -7199, since: time), NSDate(timeInterval: 7199, since: time))
+        
+        let compoundTablePredicate =  NSCompoundPredicate(type: .and, subpredicates: [entityPredicate, tableCapacityPredicate])
+        
+        let compoundTimePredicate = NSCompoundPredicate(type: .not, subpredicates: [timePredicate])
+    
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [compoundTimePredicate, compoundTablePredicate])
         
         return compoundPredicate
     }
@@ -122,12 +134,11 @@ extension AvailableTimeView {
             
         }
     
-        print(arr.first?.formatted())
         return arr
     }
     
-    
 
+    
 }
 
 //struct AvailableTimeView_Previews: PreviewProvider {

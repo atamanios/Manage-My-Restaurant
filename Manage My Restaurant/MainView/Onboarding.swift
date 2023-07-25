@@ -69,9 +69,6 @@ struct Onboarding: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(lineWidth: 1).foregroundColor(.gray))
                 .padding(.bottom, 10)
                 
-                //                TODO: open days does not work properly
-                //                It forces isOpen to true all the time.
-                //                Might require creation of dummy array to transfer open days and display them.
                 HStack {
                     
                     Text("Open days")
@@ -140,11 +137,12 @@ struct Onboarding: View {
                     
                     userSettings.resetPublishedValues()
                     
+                    
                 } else {
                     
                     userSettings.updateKeyValues()
                     ContextOperations.batchDelete("Table", viewContext)
-                    
+                    print("This loads")
                 }
             }
             .toolbar {

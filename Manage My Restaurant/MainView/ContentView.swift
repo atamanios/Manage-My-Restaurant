@@ -14,12 +14,14 @@ struct ContentView: View {
     @EnvironmentObject private var userSettings: UserSettings
     
     @State private var day: Date = .now
+    @State var numberOfGuest: Int = 2
+    @State var showGuestNumberPicker = false
     
     var body: some View {
         
         NavigationStack {
             
-            TopSectionView(today: $day)
+            TopSectionView(today: $day, showGuestNumberPicker: $showGuestNumberPicker, numberOfGuest: $numberOfGuest)
             
             TabView {
                 
@@ -31,9 +33,18 @@ struct ContentView: View {
                     .tabItem {
                         Label("Guest List", systemImage: "person.3")
                     }
-                AvailableTimeView(day: $day, numberOfGuest: 2)
+                AvailableTimeView(day: $day, numberOfGuest: $numberOfGuest)
                     .tabItem {
                         Label("New Reservation", systemImage: "rectangle.and.pencil.and.ellipsis")
+                    }
+                    .onAppear {
+                        
+                        showGuestNumberPicker = true
+                        
+                    }
+                    .onDisappear {
+                        
+                        showGuestNumberPicker = false
                     }
             }
             .toolbar {
@@ -47,14 +58,14 @@ struct ContentView: View {
 
 extension ContentView {
     
-    var createNewReservation: some View {
-        
-        NavigationLink(destination: CreateNewReservation()) {
-            
-            Text("Create New Reservation")
-            
-        }.buttonStyle(.borderedProminent)
-    }
+//    var createNewReservation: some View {
+//        
+//        NavigationLink(destination: CreateNewReservation()) {
+//            
+//            Text("Create New Reservation")
+//            
+//        }.buttonStyle(.borderedProminent)
+//    }
     
     func buildPredicate() -> NSPredicate {
 

@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Day: Identifiable, Codable {
+struct Day: Identifiable, Codable, Equatable, Hashable {
     
     var id = UUID()
     var day: String
-    var isOpen = true
+    var isOpen: Bool
     
     enum DaysOfTheWeek: String {
         case monday, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -20,5 +20,16 @@ struct Day: Identifiable, Codable {
 //    TODO: Implement safety check for days of the week
     init(day: DaysOfTheWeek) {
         self.day = day.rawValue
+        self.isOpen = true
+    }
+    
+    static func == (lhs: Day, rhs: Day) -> Bool {
+        
+        return lhs.day == rhs.day && lhs.isOpen == rhs.isOpen
+        
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(day)
     }
 }

@@ -31,6 +31,8 @@ class UserSettings: ObservableObject {
         isOnboarded = false
         nameOfTheRestaurant = ""
         openDays = [.init(day: .monday), .init(day: .tuesday), .init(day: .wednesday), .init(day: .thursday), .init(day: .friday), .init(day: .saturday), .init(day: .sunday)]
+        
+        
         openingHours = Calendar.current.dateComponents([.hour, .minute], from: .now)
         closingHours = Calendar.current.dateComponents([.hour, .minute], from: Date(timeIntervalSinceNow: 36000))
         

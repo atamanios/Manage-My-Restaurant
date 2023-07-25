@@ -11,7 +11,7 @@ import CoreData
 struct Settings: View {
     
     
-//  TODO: below is mock data, unify it with onboarding variables
+
     @EnvironmentObject private var userSettings: UserSettings
     
     var body: some View {
@@ -45,15 +45,15 @@ extension Settings {
             HStack{
                 
                 Text("Opening Hours: ")
-                Text("\(userSettings.openingHours.hour!):\(userSettings.openingHours.minute!)")
-                
+//                Text("\(userSettings.openingHours.hour!.formatted()):\(userSettings.openingHours.minute!.formatted())")
+                Text(userSettings.openingHours.hourAndMinuteDisplay())
             }
             
             HStack {
                 
                 Text("Closing Hours: ")
-                Text("\(userSettings.closingHours.hour!):\(userSettings.closingHours.minute!)")
-                
+//                Text("\(userSettings.closingHours.hour!.formatted()):\(userSettings.closingHours.minute!.formatted())")
+                Text(userSettings.closingHours.hourAndMinuteDisplay())
             }
         }
         .listStyle(.plain)

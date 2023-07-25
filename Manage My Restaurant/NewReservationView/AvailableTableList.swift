@@ -42,6 +42,7 @@ struct AvailableTableList: View {
                                 
                                 FetchedObjects(predicate: buildGuestPredicate(table), sortDescriptors: buildGuestSortDescriptor()) {
                                 (guests: [Guest]) in
+                                    
 
                                 HStack {
                                     

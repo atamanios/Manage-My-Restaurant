@@ -25,6 +25,7 @@
 		F69CBD782A388E9D005110B1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69CBD772A388E9D005110B1 /* HeaderView.swift */; };
 		F69CBD7A2A389794005110B1 /* TableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69CBD792A389794005110B1 /* TableListView.swift */; };
 		F69CBD7C2A38CEF0005110B1 /* GuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69CBD7B2A38CEF0005110B1 /* GuestListView.swift */; };
+		F6AC43D82A6FA6F7005E04C9 /* HourAndMinuteDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC43D72A6FA6F7005E04C9 /* HourAndMinuteDisplay.swift */; };
 		F6BDFB0529FA654B0074B26E /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BDFB0429FA654B0074B26E /* FetchedObjects.swift */; };
 		F6C5A1842A335E900037E3AB /* CreateReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5A1832A335E900037E3AB /* CreateReservationView.swift */; };
 		F6E6C70029E4303A001C92E5 /* ContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E6C6FF29E4303A001C92E5 /* ContextOperations.swift */; };
@@ -58,6 +59,7 @@
 		F69CBD772A388E9D005110B1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F69CBD792A389794005110B1 /* TableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListView.swift; sourceTree = "<group>"; };
 		F69CBD7B2A38CEF0005110B1 /* GuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListView.swift; sourceTree = "<group>"; };
+		F6AC43D72A6FA6F7005E04C9 /* HourAndMinuteDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourAndMinuteDisplay.swift; sourceTree = "<group>"; };
 		F6BDFB0429FA654B0074B26E /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
 		F6C5A1832A335E900037E3AB /* CreateReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationView.swift; sourceTree = "<group>"; };
 		F6E6C6FF29E4303A001C92E5 /* ContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextOperations.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				F64B66AC29E83C82007E443D /* ShortString.swift */,
+				F6AC43D72A6FA6F7005E04C9 /* HourAndMinuteDisplay.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -211,10 +214,10 @@
 		F6EC2C852A2DB5CC00D619D6 /* NewReservationView */ = {
 			isa = PBXGroup;
 			children = (
-				F6FE7A0B2A3AFF900077AF8A /* AvailableTimeView.swift */,
 				F64B66B529E98053007E443D /* CreateNewReservation.swift */,
 				F6EC2C862A2E001B00D619D6 /* NewReservationForm.swift */,
 				F6EC2C832A2DB5C300D619D6 /* AvailableTableList.swift */,
+				F6FE7A0B2A3AFF900077AF8A /* AvailableTimeView.swift */,
 				F6C5A1832A335E900037E3AB /* CreateReservationView.swift */,
 			);
 			path = NewReservationView;
@@ -298,6 +301,7 @@
 				F6BDFB0529FA654B0074B26E /* FetchedObjects.swift in Sources */,
 				F64FE0A92A39A44100746343 /* TopSectionView.swift in Sources */,
 				F621D04129D9FF3600229097 /* Persistence.swift in Sources */,
+				F6AC43D82A6FA6F7005E04C9 /* HourAndMinuteDisplay.swift in Sources */,
 				F6E6C70429E458F3001C92E5 /* UserSettings.swift in Sources */,
 				F621D04429D9FF3600229097 /* Manage_My_Restaurant.xcdatamodeld in Sources */,
 				F69CBD7C2A38CEF0005110B1 /* GuestListView.swift in Sources */,

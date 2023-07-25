@@ -20,15 +20,17 @@ struct OpenDaysSheet: View {
             Spacer()
             List {
              
-                ForEach(Array(userSettings.openDays)) { item in
+                ForEach(Array($userSettings.openDays)) { $item in
                     
-                    ToggleView(text: item.day, toggle: item.isOpen)
+                    ToggleView(text: item.day, toggle: $item.isOpen)
                         
                 }
             }
             .listStyle(.plain)
             
             Spacer()
+            
+            
             
             Button(action: {
                 
@@ -51,13 +53,14 @@ struct ToggleView: View {
     
     var text: String
     
-    @State var toggle = true
+    @Binding var toggle: Bool
     
     var body: some View {
         
         Toggle(isOn: $toggle) {
             
             Text(text)
+
         }
         .toggleStyle(iOSCheckboxToggleStyle())
     }

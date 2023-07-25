@@ -68,16 +68,16 @@ struct NewReservationForm: View {
             
             //              TODO: starting Date() should be next 15 minute interval.
             //                Now on default it shows current time
-            DatePicker("Reserve Date & Time", selection: $reservationDate, in: Date()...Date().addingTimeInterval(15552000))
-                .onAppear {
-                    UIDatePicker.appearance().minuteInterval = 15
-                }
-                .onDisappear{
-                    UIDatePicker.appearance().minuteInterval = 1
-                }
-            
-                .tint(.red)
-                .padding(.bottom, 5)
+//            DatePicker("Reserve Date & Time", selection: $reservationDate, in: Date()...Date().addingTimeInterval(15552000))
+//                .onAppear {
+//                    UIDatePicker.appearance().minuteInterval = 15
+//                }
+//                .onDisappear{
+//                    UIDatePicker.appearance().minuteInterval = 1
+//                }
+//            
+//                .tint(.red)
+//                .padding(.bottom, 5)
             
             Divider()
             
